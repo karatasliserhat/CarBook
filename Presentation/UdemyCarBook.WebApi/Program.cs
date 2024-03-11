@@ -13,6 +13,11 @@ builder.Services.AddDbContext<CarBookContext>(opts =>
 {
     opts.UseSqlServer(builder.Configuration["ServerDbConnect"]);
 });
+
+
+builder.Services.AddAutoMapper(typeof(CarBookContext));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
