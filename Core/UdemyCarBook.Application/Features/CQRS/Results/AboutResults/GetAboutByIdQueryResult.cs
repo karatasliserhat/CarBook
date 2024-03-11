@@ -1,4 +1,4 @@
-﻿namespace UdemyCarBook.Application.Features.CQRS.Results.AboutResults
+﻿namespace UdemyCarBook.Application.Features.CQRS.Results
 {
     public class GetAboutByIdQueryResult
     {

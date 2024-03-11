@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using UdemyCarBook.Application.Features.CQRS.Commands.AboutCommands;
+﻿using Microsoft.AspNetCore.Mvc;
+using UdemyCarBook.Application.Features.CQRS.Commands;
 using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers;
-using UdemyCarBook.Application.Features.CQRS.Queries.AboutQueries;
+using UdemyCarBook.Application.Features.CQRS.Queries;
 
 namespace UdemyCarBook.WebApi.Controllers
 {

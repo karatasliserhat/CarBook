@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using UdemyCarBook.Application.Features.CQRS.Commands.AboutCommands;
+using UdemyCarBook.Application.Features.CQRS.Commands;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Domain.Entities;
 

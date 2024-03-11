@@ -1,4 +1,4 @@
-﻿namespace UdemyCarBook.Application.Features.CQRS.Commands.AboutCommands
+﻿namespace UdemyCarBook.Application.Features.CQRS.Commands
 {
     public class RemoveAboutCommand
     {
