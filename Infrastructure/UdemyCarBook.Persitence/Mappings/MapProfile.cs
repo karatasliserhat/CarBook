@@ -19,6 +19,11 @@ namespace UdemyCarBook.Persitence.Mappings
             CreateMap<Banner, CreateBannerCommand>().ReverseMap();
             CreateMap<Banner, UpdateBannerCommand>().ReverseMap();
 
+            CreateMap<Brand, GetBrandQueryResult>().ReverseMap();
+            CreateMap<Brand, GetBrandByIdQueryResult>().ReverseMap();
+            CreateMap<Brand, CreateBrandCommand>().ReverseMap();
+            CreateMap<Brand, UpdateBrandCommand>().ReverseMap();
+
         }
     }
 }
