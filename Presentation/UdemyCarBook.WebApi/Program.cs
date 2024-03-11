@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers;
+using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Persitence.Context;
+using UdemyCarBook.Persitence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,13 @@ builder.Services.AddDbContext<CarBookContext>(opts =>
     opts.UseSqlServer(builder.Configuration["ServerDbConnect"]);
 });
 
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<GetAboutQueryHandler>();
+builder.Services.AddScoped<GetAboutByIdQueryHandler>();
+builder.Services.AddScoped<CreateAboutCommandHandler>();
+builder.Services.AddScoped<RemoveAboutCommandHandler>();
+builder.Services.AddScoped<UpdateAboutCommandHandler>();
 
 builder.Services.AddAutoMapper(typeof(CarBookContext));
 
