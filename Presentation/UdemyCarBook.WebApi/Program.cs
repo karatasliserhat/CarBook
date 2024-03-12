@@ -3,8 +3,8 @@ using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers;
-using UdemyCarBook.Application.Features.CQRS.Queries;
 using UdemyCarBook.Application.Interfaces;
+using UdemyCarBook.Application.Mappings;
 using UdemyCarBook.Persitence.Context;
 using UdemyCarBook.Persitence.Repositories;
 
@@ -23,6 +23,7 @@ builder.Services.AddDbContext<CarBookContext>(opts =>
 
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
 builder.Services.AddScoped<CreateAboutCommandHandler>();
@@ -47,8 +48,9 @@ builder.Services.AddScoped<GetCarByIdQueryHandler>();
 builder.Services.AddScoped<CreateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
+builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
 
-builder.Services.AddAutoMapper(typeof(CarBookContext));
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 
 var app = builder.Build();

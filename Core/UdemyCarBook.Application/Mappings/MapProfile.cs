@@ -3,9 +3,9 @@ using UdemyCarBook.Application.Features.CQRS.Commands;
 using UdemyCarBook.Application.Features.CQRS.Results;
 using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Persitence.Mappings
+namespace UdemyCarBook.Application.Mappings
 {
-    public class MapProfile:Profile
+    public class MapProfile : Profile
     {
         public MapProfile()
         {
@@ -26,6 +26,7 @@ namespace UdemyCarBook.Persitence.Mappings
 
             CreateMap<Car, GetCarQueryResult>().ReverseMap();
             CreateMap<Car, GetCarByIdQueryResult>().ReverseMap();
+            CreateMap<Car, GetCarWithBrandQueryResult>().ForMember(x => x.BrandName, opt => opt.MapFrom(x => x.Brand.Name)).ReverseMap();
             CreateMap<Car, CreateCarCommand>().ReverseMap();
             CreateMap<Car, UpdateCarCommand>().ReverseMap();
 
