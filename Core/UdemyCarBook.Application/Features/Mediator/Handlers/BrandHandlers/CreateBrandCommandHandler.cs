@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using UdemyCarBook.Application.Features.CQRS.Commands;
+using MediatR;
+using UdemyCarBook.Application.Features.Mediator.Commands;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Application.Features.CQRS.Handlers.BrandHandlers
+namespace UdemyCarBook.Application.Features.Mediator.Handlers.BrandHandlers
 {
-    public class CreateBrandCommandHandler
+    public class CreateBrandCommandHandler:IRequestHandler<CreateBrandCommand>
     {
         private readonly IRepository<Brand> _repository;
         private readonly IMapper _mapper;
@@ -16,9 +17,9 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.BrandHandlers
             _mapper = mapper;
         }
 
-        public async Task Handle(CreateBrandCommand createBrandCommand)
+        public async Task Handle(CreateBrandCommand request, CancellationToken cancellationToken)
         {
-            await _repository.CreateAsync(_mapper.Map<Brand>(createBrandCommand));
+            await _repository.CreateAsync(_mapper.Map<Brand>(request));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace UdemyCarBook.Application.Features.CQRS.Results
+﻿namespace UdemyCarBook.Application.Features.Mediator.Results
 {
     public class GetBrandQueryResult
     {

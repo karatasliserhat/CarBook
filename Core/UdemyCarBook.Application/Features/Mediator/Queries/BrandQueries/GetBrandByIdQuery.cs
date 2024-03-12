@@ -1,6 +1,8 @@
-﻿namespace UdemyCarBook.Application.Features.CQRS.Queries
+﻿using MediatR;
+
+namespace UdemyCarBook.Application.Features.Mediator.Results
 {
-    public class GetBrandByIdQuery
+    public class GetBrandByIdQuery:IRequest<GetBrandByIdQueryResult>
     {
         public int BrandId { get; set; }
 

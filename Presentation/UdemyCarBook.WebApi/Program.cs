@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using UdemyCarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using UdemyCarBook.Application.Features.Mediator.Handlers.BannerHandlers;
+using UdemyCarBook.Application.Features.Mediator.Handlers.BrandHandlers;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Application.Mappings;
 using UdemyCarBook.Persitence.Context;
@@ -28,11 +28,6 @@ builder.Services.AddScoped<ICarRepository, CarRepository>();
 
 
 
-builder.Services.AddScoped<GetBrandQueryHandler>();
-builder.Services.AddScoped<GetBrandByIdQueryHandler>();
-builder.Services.AddScoped<CreateBrandCommandHandler>();
-builder.Services.AddScoped<RemoveBrandCommandHandler>();
-builder.Services.AddScoped<UpdateBrandCommandHandler>();
 
 
 builder.Services.AddScoped<GetCarQueryHandler>();

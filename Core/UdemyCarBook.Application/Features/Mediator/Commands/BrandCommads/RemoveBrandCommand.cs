@@ -1,6 +1,8 @@
-﻿namespace UdemyCarBook.Application.Features.CQRS.Commands
+﻿using MediatR;
+
+namespace UdemyCarBook.Application.Features.Mediator.Commands
 {
-    public class RemoveBrandCommand
+    public class RemoveBrandCommand:IRequest
     {
         public int BrandId { get; set; }
 
