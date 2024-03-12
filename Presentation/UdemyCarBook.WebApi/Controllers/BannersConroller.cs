@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using UdemyCarBook.Application.Features.CQRS.Commands;
-using UdemyCarBook.Application.Features.CQRS.Handlers.BannerHandlers;
-using UdemyCarBook.Application.Features.CQRS.Queries;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using UdemyCarBook.Application.Features.Mediator.Commands;
+using UdemyCarBook.Application.Features.Mediator.Queries;
+
 
 namespace UdemyCarBook.WebApi.Controllers
 {
@@ -9,51 +10,43 @@ namespace UdemyCarBook.WebApi.Controllers
     [ApiController]
     public class BannersConroller : ControllerBase
     {
-        private readonly CreateBannerCommandHandler _createBannerCommand;
-        private readonly GetBannerByIdQueryHandler _getBannerByIdQueryHandler;
-        private readonly GetBannerQueryHandler _getBannerQueryHandler;
-        private readonly RemoveBannerCommandHandler _removeBannerCommandHandler;
-        private readonly UpdateBannerCommandHandler _updateBannerCommandHandler;
+        private readonly IMediator _meditorR;
 
-        public BannersConroller(CreateBannerCommandHandler createBannerCommand, GetBannerByIdQueryHandler getBannerByIdQueryHandler, GetBannerQueryHandler getBannerQueryHandler, RemoveBannerCommandHandler removeBannerCommandHandler, UpdateBannerCommandHandler updateBannerCommandHandler)
+        public BannersConroller(IMediator meditorR)
         {
-            _createBannerCommand = createBannerCommand;
-            _getBannerByIdQueryHandler = getBannerByIdQueryHandler;
-            _getBannerQueryHandler = getBannerQueryHandler;
-            _removeBannerCommandHandler = removeBannerCommandHandler;
-            _updateBannerCommandHandler = updateBannerCommandHandler;
+            _meditorR = meditorR;
         }
 
         [HttpGet]
         public async Task<IActionResult> BannerList()
         {
-            var values = await _getBannerQueryHandler.Handle();
+            var values = await _meditorR.Send(new GetBannerQuery());
             return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBanner(int id)
         {
-            var values = await _getBannerByIdQueryHandler.Handle(new GetBannerByIdQuery(id));
+            var values = await _meditorR.Send(new GetBannerByIdQuery(id));
             return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateBanner(CreateBannerCommand createBannerCommand)
         {
-            await _createBannerCommand.Handle(createBannerCommand);
+            await _meditorR.Send(createBannerCommand);
             return Ok("Banner bilgisi Eklendi");
         }
         [HttpDelete("{id}")]
 
         public async Task<IActionResult> RemoveBanner(int id)
         {
-            await _removeBannerCommandHandler.Handle(new RemoveBannerCommand(id));
+            await _meditorR.Send(new RemoveBannerCommand(id));
             return Ok("Banner bilgisi silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> BannerUpdate(UpdateBannerCommand updateBannerCommand)
         {
-            await _updateBannerCommandHandler.Handle(updateBannerCommand);
+            await _meditorR.Send(updateBannerCommand);
             return Ok("Banner bilgisi güncellendi");
         }
     }

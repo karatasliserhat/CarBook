@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using UdemyCarBook.Application.Features.CQRS.Handlers.AboutHandlers;
-using UdemyCarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.CategoryHandlers;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers;
+using UdemyCarBook.Application.Features.Mediator.Handlers.BannerHandlers;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Application.Mappings;
 using UdemyCarBook.Persitence.Context;
@@ -26,17 +25,8 @@ builder.Services.AddDbContext<CarBookContext>(opts =>
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICarRepository, CarRepository>();
-builder.Services.AddScoped<GetAboutQueryHandler>();
-builder.Services.AddScoped<GetAboutByIdQueryHandler>();
-builder.Services.AddScoped<CreateAboutCommandHandler>();
-builder.Services.AddScoped<RemoveAboutCommandHandler>();
-builder.Services.AddScoped<UpdateAboutCommandHandler>();
 
-builder.Services.AddScoped<GetBannerQueryHandler>();
-builder.Services.AddScoped<GetBannerByIdQueryHandler>();
-builder.Services.AddScoped<CreateBannerCommandHandler>();
-builder.Services.AddScoped<RemoveBannerCommandHandler>();
-builder.Services.AddScoped<UpdateBannerCommandHandler>();
+
 
 builder.Services.AddScoped<GetBrandQueryHandler>();
 builder.Services.AddScoped<GetBrandByIdQueryHandler>();
@@ -69,7 +59,10 @@ builder.Services.AddScoped<UpdateContactCommandHandler>();
 
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
-
+builder.Services.AddMediatR(conf =>
+{
+    conf.RegisterServicesFromAssembly(typeof(MapProfile).Assembly);
+});
 
 var app = builder.Build();
 
