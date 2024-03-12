@@ -36,6 +36,12 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Category, CreateCategoryCommand>().ReverseMap();
             CreateMap<Category, UpdateCategoryCommand>().ReverseMap();
 
+
+            CreateMap<Contact, GetContactQueryResult>().ReverseMap();
+            CreateMap<Contact, GetContactByIdQueryResult>().ReverseMap();
+            CreateMap<Contact, CreateContactCommand>().ReverseMap();
+            CreateMap<Contact, UpdateContactCommand>().ReverseMap();
+
         }
     }
 }
