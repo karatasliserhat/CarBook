@@ -47,6 +47,11 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Feature, CreateFeatureCommand>().ReverseMap();
             CreateMap<Feature, UpdateFeatureCommand>().ReverseMap();
 
+            CreateMap<FooterAddress, GetFooterAddressQueryResult>().ReverseMap();
+            CreateMap<FooterAddress, GetFooterAddressByIdQueryResult>().ReverseMap();
+            CreateMap<FooterAddress, CreateFooterAddressCommand>().ReverseMap();
+            CreateMap<FooterAddress, UpdateFooterAddressCommand>().ReverseMap();
+
         }
     }
 }
