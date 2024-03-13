@@ -58,6 +58,16 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Location, CreateLocationCommand>().ReverseMap();
             CreateMap<Location, UpdateLocationCommand>().ReverseMap();
 
+            CreateMap<Pricing, GetPricingQueryResult>().ReverseMap();
+            CreateMap<Pricing, GetPricingByIdQueryResult>().ReverseMap();
+            CreateMap<Pricing, CreatePricingCommand>().ReverseMap();
+            CreateMap<Pricing, UpdatePricingCommand>().ReverseMap();
+
+            CreateMap<Service, GetServiceQueryResult>().ReverseMap();
+            CreateMap<Service, GetServiceByIdQueryResult>().ReverseMap();
+            CreateMap<Service, CreateServiceCommand>().ReverseMap();
+            CreateMap<Service, UpdateServiceCommand>().ReverseMap();
+
         }
     }
 }
