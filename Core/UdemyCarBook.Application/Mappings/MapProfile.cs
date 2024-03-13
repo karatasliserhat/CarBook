@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using UdemyCarBook.Application.Features.CQRS.Commands;
-using UdemyCarBook.Application.Features.CQRS.Results;
 using UdemyCarBook.Application.Features.Mediator.Commands;
 using UdemyCarBook.Application.Features.Mediator.Results;
 using UdemyCarBook.Domain.Entities;

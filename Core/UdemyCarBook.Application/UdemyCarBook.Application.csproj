@@ -15,4 +15,11 @@
     <ProjectReference Include="..\UdemyCarBook.Domain\UdemyCarBook.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\CQRS\Commands\" />
+    <Folder Include="Features\CQRS\Handlers\" />
+    <Folder Include="Features\CQRS\Queries\" />
+    <Folder Include="Features\CQRS\Results\" />
+  </ItemGroup>
+
 </Project>
