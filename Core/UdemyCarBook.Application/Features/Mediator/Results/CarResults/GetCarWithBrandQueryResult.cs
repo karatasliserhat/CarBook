@@ -1,8 +1,10 @@
-﻿namespace UdemyCarBook.Application.Features.CQRS.Commands
+﻿namespace UdemyCarBook.Application.Features.Mediator.Results
 {
-    public class CreateCarCommand
+    public class GetCarWithBrandQueryResult
     {
+        public int CarId { get; set; }
         public int BrandId { get; set; }
+        public string BrandName { get; set; }
         public string Model { get; set; }
         public string CoverImageUrl { get; set; }
         public int Km { get; set; }

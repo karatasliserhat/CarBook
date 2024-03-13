@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using UdemyCarBook.Application.Features.CQRS.Commands;
+using MediatR;
+using UdemyCarBook.Application.Features.Mediator.Commands;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Domain.Entities;
 
-namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers
+namespace UdemyCarBook.Application.Features.Mediator.Handlers.CarHandlers
 {
-    public class UpdateCarCommandHandler
+    public class UpdateCarCommandHandler:IRequestHandler<UpdateCarCommand>
     {
         private readonly IRepository<Car> _repository;
         private readonly IMapper _mapper;
@@ -16,9 +17,9 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers
             _mapper = mapper;
         }
 
-        public async Task Handle(UpdateCarCommand updateCarCommand)
+        public async Task Handle(UpdateCarCommand request, CancellationToken cancellationToken)
         {
-            await _repository.UpdateAsync(_mapper.Map<Car>(updateCarCommand));
+            await _repository.UpdateAsync(_mapper.Map<Car>(request));
         }
     }
 }

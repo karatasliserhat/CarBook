@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using UdemyCarBook.Application.Features.CQRS.Commands;
-using UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers;
-using UdemyCarBook.Application.Features.CQRS.Queries;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using UdemyCarBook.Application.Features.Mediator.Commands;
+using UdemyCarBook.Application.Features.Mediator.Queries;
 
 namespace UdemyCarBook.WebApi.Controllers
 {
@@ -9,58 +9,49 @@ namespace UdemyCarBook.WebApi.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
-        private readonly CreateCarCommandHandler _createCarCommandHandler;
-        private readonly GetCarByIdQueryHandler _getCarByIdQueryHandler;
-        private readonly GetCarQueryHandler _getCarQueryHandler;
-        private readonly RemoveCarCommandHandler _removeCarCommandHandler;
-        private readonly UpdateCarCommandHandler _updateCarCommandHandler;
-        private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
-        public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, GetCarQueryHandler getCarQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler)
+        private readonly IMediator _mediatR;
+
+        public CarsController(IMediator mediatR)
         {
-            _createCarCommandHandler = createCarCommandHandler;
-            _getCarByIdQueryHandler = getCarByIdQueryHandler;
-            _getCarQueryHandler = getCarQueryHandler;
-            _removeCarCommandHandler = removeCarCommandHandler;
-            _updateCarCommandHandler = updateCarCommandHandler;
-            _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
+            _mediatR = mediatR;
         }
 
         [HttpGet]
         public async Task<IActionResult> CarList()
         {
-            var values = await _getCarQueryHandler.Handle();
+            var values = await _mediatR.Send(new GetCarQuery());
             return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCar(int id)
         {
-            var values = await _getCarByIdQueryHandler.Handle(new GetCarByIdQuery(id));
+            var values = await _mediatR.Send(new GetCarByIdQuery(id));
             return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateCar(CreateCarCommand createCarCommand)
         {
-            await _createCarCommandHandler.Handle(createCarCommand);
+            await _mediatR.Send(createCarCommand);
             return Ok("Araç Eklendi");
         }
         [HttpDelete("{id}")]
 
         public async Task<IActionResult> RemoveCar(int id)
         {
-            await _removeCarCommandHandler.Handle(new RemoveCarCommand(id));
+            await _mediatR.Send(new RemoveCarCommand(id));
             return Ok("Araç silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> CarUpdate(UpdateCarCommand updateCarCommand)
         {
-            await _updateCarCommandHandler.Handle(updateCarCommand);
+            await _mediatR.Send(updateCarCommand);
             return Ok("Araç güncellendi");
         }
         [HttpGet("[action]")]
         public async Task<IActionResult> GetCarWithBrand()
         {
-            var values = await _getCarWithBrandQueryHandler.Handle();
+            var values = await _mediatR.Send(new GetCarWithBrandQuery());
             return Ok(values);
         }
     }

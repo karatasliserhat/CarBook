@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
-using UdemyCarBook.Application.Features.CQRS.Results;
+using MediatR;
+using UdemyCarBook.Application.Features.Mediator.Queries;
+using UdemyCarBook.Application.Features.Mediator.Results;
 using UdemyCarBook.Application.Interfaces;
 
-namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers
+namespace UdemyCarBook.Application.Features.Mediator.Handlers.CarHandlers
 {
-    public class GetCarWithBrandQueryHandler
+    public class GetCarWithBrandQueryHandler : IRequestHandler<GetCarWithBrandQuery, List<GetCarWithBrandQueryResult>>
     {
         private readonly ICarRepository _repository;
         private readonly IMapper _mapper;
@@ -14,7 +16,7 @@ namespace UdemyCarBook.Application.Features.CQRS.Handlers.CarHandlers
             _mapper = mapper;
         }
 
-        public async Task<List<GetCarWithBrandQueryResult>> Handle()
+        public async Task<List<GetCarWithBrandQueryResult>> Handle(GetCarWithBrandQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetCarWithBrand();
 

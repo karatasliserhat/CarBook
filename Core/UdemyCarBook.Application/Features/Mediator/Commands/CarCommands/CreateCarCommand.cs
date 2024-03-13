@@ -1,8 +1,9 @@
-﻿namespace UdemyCarBook.Application.Features.CQRS.Commands
+﻿using MediatR;
+
+namespace UdemyCarBook.Application.Features.Mediator.Commands
 {
-    public class UpdateCarCommand
+    public class CreateCarCommand:IRequest
     {
-        public int CarId { get; set; }
         public int BrandId { get; set; }
         public string Model { get; set; }
         public string CoverImageUrl { get; set; }
