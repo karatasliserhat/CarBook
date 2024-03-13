@@ -3,7 +3,7 @@ using UdemyCarBook.Application.Features.Mediator.Results;
 
 namespace UdemyCarBook.Application.Features.Mediator.Queries
 {
-    public class GetLocationQuery : IRequest<List<GetLocationQueryResult>>
+    public class GetPricingQuery:IRequest<List<GetPricingQueryResult>>
     {
     }
 }
