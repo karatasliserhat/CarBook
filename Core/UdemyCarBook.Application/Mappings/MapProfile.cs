@@ -52,6 +52,12 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<FooterAddress, CreateFooterAddressCommand>().ReverseMap();
             CreateMap<FooterAddress, UpdateFooterAddressCommand>().ReverseMap();
 
+
+            CreateMap<Location, GetLocationQueryResult>().ReverseMap();
+            CreateMap<Location, GetLocationByIdQueryResult>().ReverseMap();
+            CreateMap<Location, CreateLocationCommand>().ReverseMap();
+            CreateMap<Location, UpdateLocationCommand>().ReverseMap();
+
         }
     }
 }
