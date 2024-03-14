@@ -12,6 +12,10 @@ builder.Services.AddHttpClient<IAboutConsumeApiService, AboutConsumeApiService>(
 {
     opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
 });
+builder.Services.AddHttpClient<ITestimonialConsumeApiService, TestimonialConsumeApiService>(opts =>
+{
+    opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
+});
 
 var app = builder.Build();
 

@@ -74,6 +74,11 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<SocialMedia, CreateSocialMediaCommand>().ReverseMap();
             CreateMap<SocialMedia, UpdateSocialMediaCommand>().ReverseMap();
 
+            CreateMap<Testimonial, GetTestimonialQueryResult>().ReverseMap();
+            CreateMap<Testimonial, GetTestimonialByIdQueryResult>().ReverseMap();
+            CreateMap<Testimonial, CreateTestimonialCommand>().ReverseMap();
+            CreateMap<Testimonial, UpdateTestimonialCommand>().ReverseMap();
+
         }
     }
 }
