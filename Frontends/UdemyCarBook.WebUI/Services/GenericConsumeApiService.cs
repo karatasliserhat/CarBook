@@ -1,4 +1,5 @@
-﻿using UdemyCarBook.WebUI.Abstracts;
+﻿using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using UdemyCarBook.WebUI.Abstracts;
 
 namespace UdemyCarBook.WebUI.Services
 {
@@ -42,7 +43,10 @@ namespace UdemyCarBook.WebUI.Services
         {
             return await _client.GetFromJsonAsync<List<resultDto>>(controllerName);
         }
-
+        public async Task<List<resultDto>> GetListAsync(string controllerName, string actionName)
+        {
+            return await _client.GetFromJsonAsync<List<resultDto>>($"{controllerName}/{actionName}");
+        }
 
     }
 }
