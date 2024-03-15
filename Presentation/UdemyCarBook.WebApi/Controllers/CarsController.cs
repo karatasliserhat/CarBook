@@ -54,5 +54,11 @@ namespace UdemyCarBook.WebApi.Controllers
             var values = await _mediatR.Send(new GetCarWithBrandQuery());
             return Ok(values);
         }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetLastFiveCarWithBrand()
+        {
+            var values = await _mediatR.Send(new GetLastFiveCarWithBrandQuery());
+            return Ok(values);
+        }
     }
 }

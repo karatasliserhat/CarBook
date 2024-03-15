@@ -18,5 +18,10 @@ namespace UdemyCarBook.Persitence.Repositories
         {
             return await _carBookContext.Cars.Include(x => x.Brand).AsNoTracking().ToListAsync();
         }
+
+        public async Task<List<Car>> GetLastFiveCarWithBrand()
+        {
+            return await _carBookContext.Cars.Include(x => x.Brand).Take(5).OrderByDescending(x => x.CarId).AsNoTracking().ToListAsync();
+        }
     }
 }

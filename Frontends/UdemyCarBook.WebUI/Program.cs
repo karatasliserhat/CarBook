@@ -1,37 +1,11 @@
-using UdemyCarBook.WebUI.Abstracts;
-using UdemyCarBook.WebUI.Services;
+using UdemyCarBook.WebUI.CustomAddServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped(typeof(IGenericConsumeApiService<,,>), typeof(GenericConsumeApiService<,,>));
-
-builder.Services.AddHttpClient<IAboutConsumeApiService, AboutConsumeApiService>(opts =>
-{
-    opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
-});
-builder.Services.AddHttpClient<ITestimonialConsumeApiService, TestimonialConsumeApiService>(opts =>
-{
-    opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
-});
-builder.Services.AddHttpClient<IServiceConsumeApiService, ServiceConsumeApiService>(opts =>
-{
-    opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
-});
-builder.Services.AddHttpClient<ICarConsumeApiService, CarConsumeApiService>(opts =>
-{
-    opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
-});
-builder.Services.AddHttpClient<IFooterAddressConsumeApiService, FooterAddressConsumeApiService>(opts =>
-{
-    opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
-});
-builder.Services.AddHttpClient<IContactConsumeApiService, ContactConsumeApiService>(opts =>
-{
-    opts.BaseAddress = new Uri(builder.Configuration["ApiConsumes:BaseAddress"]);
-});
+builder.Services.AddBuilderService(builder.Configuration);
 
 var app = builder.Build();
 

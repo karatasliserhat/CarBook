@@ -8,11 +8,11 @@ namespace UdemyCarBook.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BannersConroller : ControllerBase
+    public class BannersController : ControllerBase
     {
         private readonly IMediator _meditorR;
 
-        public BannersConroller(IMediator meditorR)
+        public BannersController(IMediator meditorR)
         {
             _meditorR = meditorR;
         }

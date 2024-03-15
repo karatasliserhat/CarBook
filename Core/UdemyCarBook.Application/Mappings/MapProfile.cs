@@ -27,6 +27,7 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Car, GetCarQueryResult>().ReverseMap();
             CreateMap<Car, GetCarByIdQueryResult>().ReverseMap();
             CreateMap<Car, GetCarWithBrandQueryResult>().ForMember(x => x.BrandName, opt => opt.MapFrom(x => x.Brand.Name)).ReverseMap();
+            CreateMap<Car, GetLastFiveCarWithBrandQueryResult>().ForMember(x => x.BrandName, opt => opt.MapFrom(x => x.Brand.Name)).ReverseMap();
             CreateMap<Car, CreateCarCommand>().ReverseMap();
             CreateMap<Car, UpdateCarCommand>().ReverseMap();
 
