@@ -1,11 +1,12 @@
-﻿namespace UdemyCarBook.Domain.Entities
+﻿using MediatR;
+
+namespace UdemyCarBook.Application.Features.Mediator.Commands
 {
-    public class Author
+    public class UpdateAuthorCommand:IRequest
     {
         public int AuthorId { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<Blog> Blogs { get; set; }
     }
 }

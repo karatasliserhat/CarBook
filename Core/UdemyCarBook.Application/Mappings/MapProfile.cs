@@ -80,6 +80,18 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Testimonial, CreateTestimonialCommand>().ReverseMap();
             CreateMap<Testimonial, UpdateTestimonialCommand>().ReverseMap();
 
+            CreateMap<Author, GetAuthorQueryResult>().ReverseMap();
+            CreateMap<Author, GetAuthorByIdQueryResult>().ReverseMap();
+            CreateMap<Author, CreateAuthorCommand>().ReverseMap();
+            CreateMap<Author, UpdateAuthorCommand>().ReverseMap();
+
+            CreateMap<Blog, GetBlogQueryResult>().ReverseMap();
+            CreateMap<Blog, GetBlogByIdQueryResult>().ReverseMap();
+            CreateMap<Blog, CreateBlogCommand>().ReverseMap();
+            CreateMap<Blog, UpdateBlogCommand>().ReverseMap();
+            CreateMap<Blog, GetBlogWithAuthorAndCategoryQueryResult>().ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
+            CreateMap<Blog, GetLastThreeBlogsWithAuthorsAndCategoryQueryResult>().ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
+
         }
     }
 }
