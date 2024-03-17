@@ -5,9 +5,9 @@ namespace UdemyCarBook.WebUI.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ICarConsumeApiService _carService;
+        private readonly ICarPricingConsumeApiServe _carService;
 
-        public CarController(ICarConsumeApiService carService)
+        public CarController(ICarPricingConsumeApiServe carService)
         {
             _carService = carService;
         }
@@ -16,7 +16,7 @@ namespace UdemyCarBook.WebUI.Controllers
         {
             ViewBag.v1 = "Araçlarımız";
             ViewBag.v2 = "Aracınızı Seçiniz";
-            return View(await _carService.GetListAsync("Cars", "GetCarWithBrand"));
+            return View(await _carService.GetListAsync("CarPricings", "CarPricingWithCarsDayList"));
         }
     }
 }

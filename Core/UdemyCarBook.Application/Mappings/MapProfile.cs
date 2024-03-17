@@ -92,6 +92,25 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Blog, GetBlogWithAuthorAndCategoryQueryResult>().ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
             CreateMap<Blog, GetLastThreeBlogsWithAuthorsAndCategoryQueryResult>().ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
 
+
+            CreateMap<CarPricing, GetCarPricingWithCarsQueryResult>().
+                ForMember(x => x.PricingName, map => map.MapFrom(y => y.Pricing.Name)).
+                ForMember(x => x.CarModel, map => map.MapFrom(x => x.Car.Model)).
+                ForMember(x => x.CoverImageUrl, map => map.MapFrom(x => x.Car.CoverImageUrl)).
+                ForMember(x => x.Km, map => map.MapFrom(x => x.Car.Km)).
+                ForMember(x => x.BrandName, map => map.MapFrom(y => y.Car.Brand.Name)).ReverseMap();
+
+            CreateMap<CarPricing, GetCarPricingWithCarsDayQueryResult>().
+                ForMember(x => x.PricingName, map => map.MapFrom(y => y.Pricing.Name)).
+                ForMember(x => x.CarModel, map => map.MapFrom(x => x.Car.Model)).
+                ForMember(x => x.CoverImageUrl, map => map.MapFrom(x => x.Car.CoverImageUrl)).
+                ForMember(x => x.Km, map => map.MapFrom(x => x.Car.Km)).
+                ForMember(x => x.BrandName, map => map.MapFrom(y => y.Car.Brand.Name)).ReverseMap();
+
+            CreateMap<CarPricing, GetCarPricingByIdQueryResult>().ReverseMap();
+            CreateMap<CarPricing, CreateCarPricingCommand>().ReverseMap();
+            CreateMap<CarPricing, UpdateCarPricingCommand>().ReverseMap();
+
         }
     }
 }

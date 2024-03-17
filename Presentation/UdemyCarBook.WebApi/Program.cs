@@ -21,6 +21,7 @@ builder.Services.AddDbContext<CarBookContext>(opts =>
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
+builder.Services.AddScoped<ICarPricingRepository, CarPricingRepository>();
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddMediatR(conf =>
