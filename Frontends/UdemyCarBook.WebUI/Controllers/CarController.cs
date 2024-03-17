@@ -14,6 +14,8 @@ namespace UdemyCarBook.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.v1 = "Araçlarımız";
+            ViewBag.v2 = "Aracınızı Seçiniz";
             return View(await _carService.GetListAsync("Cars", "GetCarWithBrand"));
         }
     }
