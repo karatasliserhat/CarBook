@@ -111,6 +111,12 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<CarPricing, CreateCarPricingCommand>().ReverseMap();
             CreateMap<CarPricing, UpdateCarPricingCommand>().ReverseMap();
 
+
+            CreateMap<TagCloud, GetTagCloudQueryResult>().ReverseMap();
+            CreateMap<TagCloud, GetTagCloudByIdQueryResult>().ReverseMap();
+            CreateMap<TagCloud, CreateTagCloudCommand>().ReverseMap();
+            CreateMap<TagCloud, UpdateTagCloudCommand>().ReverseMap();
+
         }
     }
 }
