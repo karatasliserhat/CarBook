@@ -3,11 +3,11 @@ using UdemyCarBook.WebUI.Abstracts;
 
 namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
 {
-    public class _BlogViewComponentPartial : ViewComponent
+    public class _BlogDetailsRecentBlogsComponenetPartial : ViewComponent
     {
         private readonly IBlogConsumeApiService _blogConsumeApiService;
 
-        public _BlogViewComponentPartial(IBlogConsumeApiService blogConsumeApiService)
+        public _BlogDetailsRecentBlogsComponenetPartial(IBlogConsumeApiService blogConsumeApiService)
         {
             _blogConsumeApiService = blogConsumeApiService;
         }
