@@ -89,8 +89,18 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Blog, GetBlogByIdQueryResult>().ReverseMap();
             CreateMap<Blog, CreateBlogCommand>().ReverseMap();
             CreateMap<Blog, UpdateBlogCommand>().ReverseMap();
-            CreateMap<Blog, GetBlogWithAuthorAndCategoryQueryResult>().ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
-            CreateMap<Blog, GetLastThreeBlogsWithAuthorsAndCategoryQueryResult>().ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
+            CreateMap<Blog, GetBlogWithAuthorQueryResult>().
+                ForMember(x => x.AuthorName, map => map.MapFrom(y => y.Author.Name)).
+                ForMember(x => x.AuthorImage, map => map.MapFrom(y => y.Author.ImageUrl)).
+                ForMember(x => x.AuthorDescription, map => map.MapFrom(y => y.Author.Description)).ReverseMap();
+
+            CreateMap<Blog, GetBlogWithAuthorAndCategoryQueryResult>().
+                ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).
+                ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
+
+            CreateMap<Blog, GetLastThreeBlogsWithAuthorsAndCategoryQueryResult>().
+                ForMember(x => x.AuthorName, map => map.MapFrom(x => x.Author.Name)).
+                ForMember(x => x.CategoryName, map => map.MapFrom(x => x.Category.Name)).ReverseMap();
 
 
             CreateMap<CarPricing, GetCarPricingWithCarsQueryResult>().
@@ -116,6 +126,7 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<TagCloud, GetTagCloudByIdQueryResult>().ReverseMap();
             CreateMap<TagCloud, CreateTagCloudCommand>().ReverseMap();
             CreateMap<TagCloud, UpdateTagCloudCommand>().ReverseMap();
+            CreateMap<TagCloud, GetTagCloudByBlogIdQueryResult>().ReverseMap();
 
         }
     }

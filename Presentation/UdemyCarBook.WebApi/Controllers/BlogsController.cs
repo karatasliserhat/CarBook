@@ -55,6 +55,11 @@ namespace UdemyCarBook.WebApi.Controllers
         {
             return Ok(await _mediatR.Send(new GetBlogWithAuthorAndCategoryQuery()));
         }
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetBlogWithAuthorList(int id)
+        {
+            return Ok(await _mediatR.Send(new GetBlogWithAuthorQuery(id)));
+        }
         [HttpGet("[action]")]
         public async Task<IActionResult> GetLastThreeBlogsWithAuthorsAndCategory()
         {

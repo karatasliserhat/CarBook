@@ -28,6 +28,12 @@ namespace UdemyCarBook.WebApi.Controllers
             var values = await _mediator.Send(new GetTagCloudByIdQuery(id));
             return Ok(values);
         }
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetTagCloudByBlogIdList(int id)
+        {
+            var values = await _mediator.Send(new GetTagCloudByBlogIdQuery(id));
+            return Ok(values);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateTagCloud(CreateTagCloudCommand createTagCloudCommand)
         {
