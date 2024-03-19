@@ -128,6 +128,12 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<TagCloud, UpdateTagCloudCommand>().ReverseMap();
             CreateMap<TagCloud, GetTagCloudByBlogIdQueryResult>().ReverseMap();
 
+            CreateMap<Comment, GetCommentQueryResult>().ReverseMap();
+            CreateMap<Comment, GetCommentByIdQueryResult>().ReverseMap();
+            CreateMap<Comment, CreateCommentCommand>().ReverseMap();
+            CreateMap<Comment, UpdateCommentCommand>().ReverseMap();
+            CreateMap<Comment, GetCommentByBlogIdQueryResult>().ReverseMap();
+
         }
     }
 }

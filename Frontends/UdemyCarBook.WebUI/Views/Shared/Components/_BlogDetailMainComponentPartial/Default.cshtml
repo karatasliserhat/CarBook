@@ -11,8 +11,9 @@
 
     <div class="pt-5 mt-5">
         <h3 class="mb-5">6 Yorum</h3>
-        @await Component.InvokeAsync("_CommentListByBlogComponentPartial")
-        @await Component.InvokeAsync("_AddCommentComponenentPartial")
+        @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new { id = ViewBag.dataProtectBlogId })
+
+        @await Html.PartialAsync("/Views/Comment/CommentAdd.cshtml", new CreateCommentDto { DataProtectBlogId =ViewBag.dataProtectBlogId })
     </div>
 
 </div>

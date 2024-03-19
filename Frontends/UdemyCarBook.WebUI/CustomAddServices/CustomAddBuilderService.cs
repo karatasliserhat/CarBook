@@ -53,6 +53,10 @@ namespace UdemyCarBook.WebUI.CustomAddServices
             {
                 opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
             });
+            Services.AddHttpClient<ICommentConsumeApiService, CommentConsumeApiService>(opts =>
+            {
+                opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
+            });
 
             Services.AddDataProtection();
 

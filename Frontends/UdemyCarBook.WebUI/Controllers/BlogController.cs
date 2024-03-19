@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
+using UdemyCarBook.Dto.Dtos;
 using UdemyCarBook.WebUI.Abstracts;
 
 namespace UdemyCarBook.WebUI.Controllers
@@ -8,11 +9,11 @@ namespace UdemyCarBook.WebUI.Controllers
     {
         private readonly IBlogConsumeApiService _blogConsumeApiService;
         private readonly IDataProtector _dataProtector;
+
         public BlogController(IBlogConsumeApiService blogConsumeApiService, IDataProtectionProvider dataProvider)
         {
             _blogConsumeApiService = blogConsumeApiService;
             _dataProtector = dataProvider.CreateProtector("BlogController");
-            ;
         }
 
         public async Task<IActionResult> Index()
