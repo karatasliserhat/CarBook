@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ActionConstraints;
-using UdemyCarBook.WebUI.Abstracts;
+﻿using UdemyCarBook.WebUI.Abstracts;
 
 namespace UdemyCarBook.WebUI.Services
 {
@@ -38,7 +37,11 @@ namespace UdemyCarBook.WebUI.Services
 
 
         }
+        public async Task<updateDto> GetByIdUpdateAsync(string controllerName, int id)
+        {
+            return await _client.GetFromJsonAsync<updateDto>($"{controllerName}/{id}");
 
+        }
         public async Task<List<resultDto>> GetListAsync(string controllerName)
         {
             return await _client.GetFromJsonAsync<List<resultDto>>(controllerName);
