@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.WebApi", "Presentation\UdemyCarBook.WebApi\UdemyCarBook.WebApi.csproj", "{83DBDB7A-E026-40C7-9900-F42CEFCACA2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Application", "Core\UdemyCarBook.Application\UdemyCarBook.Application.csproj", "{6D208089-F744-4D4C-A78C-31CF2CF5F3F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.Application", "Core\UdemyCarBook.Application\UdemyCarBook.Application.csproj", "{6D208089-F744-4D4C-A78C-31CF2CF5F3F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{386BB3B9-E1EF-454C-BD97-79C7FC9A874D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.WebUI", "Frontends\UdemyCarBook.WebUI\UdemyCarBook.WebUI.csproj", "{0FCFB3E8-8AC1-4C0C-BCAE-F60E7E8E778F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.WebUI", "Frontends\UdemyCarBook.WebUI\UdemyCarBook.WebUI.csproj", "{0FCFB3E8-8AC1-4C0C-BCAE-F60E7E8E778F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Dto", "Frontends\UdemyCarBook.Dto\UdemyCarBook.Dto.csproj", "{60B8D368-4D29-478A-B5FA-6530F57F403C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.Dto", "Frontends\UdemyCarBook.Dto\UdemyCarBook.Dto.csproj", "{60B8D368-4D29-478A-B5FA-6530F57F403C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +59,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AD432428-197A-4F74-B635-CEC5B8365C64} = {462C0B9C-CD28-4907-8907-9B5F77D14839}
+		{86B894AA-E2F8-4D40-8876-9BF5C5ACCE50} = {A7AE0846-F59F-4ED5-8DBB-4EE5C843DFC6}
 		{5FB08124-2076-45ED-81DD-91422AA57346} = {86B894AA-E2F8-4D40-8876-9BF5C5ACCE50}
 		{83DBDB7A-E026-40C7-9900-F42CEFCACA2C} = {A7AE0846-F59F-4ED5-8DBB-4EE5C843DFC6}
 		{6D208089-F744-4D4C-A78C-31CF2CF5F3F1} = {462C0B9C-CD28-4907-8907-9B5F77D14839}
