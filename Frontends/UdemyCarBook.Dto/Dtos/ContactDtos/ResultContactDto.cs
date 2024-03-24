@@ -8,5 +8,6 @@
         public string Subject { get; set; }
         public string Message { get; set; }
         public DateTime SenDate { get; set; }
+        public string DataProtect { get; set; }
     }
 }
