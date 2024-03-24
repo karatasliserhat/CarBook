@@ -6,5 +6,6 @@ namespace UdemyCarBook.WebUI.Abstracts
     {
         Task<List<ResultLastThreeBlogWithAuthorDto>> GetLastThreeBlogWithAuthorList();
         Task<GetBlogWithAuthorDto> GetBlogWithAuthorListAsync(int id);
+        Task<List<GetBlogWithAuthorAndCategoryDto>> GetBlogWithAuthorAndCategoryListAsync();
     }
 }

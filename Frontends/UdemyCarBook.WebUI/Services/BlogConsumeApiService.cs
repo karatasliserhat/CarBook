@@ -11,6 +11,11 @@ namespace UdemyCarBook.WebUI.Services
             _httpClient = client;
         }
 
+        public async Task<List<GetBlogWithAuthorAndCategoryDto>> GetBlogWithAuthorAndCategoryListAsync()
+        {
+            return await _httpClient.GetFromJsonAsync<List<GetBlogWithAuthorAndCategoryDto>>($"Blogs/GetBlogWithAuthorAndCategoryList");
+        }
+
         public async Task<GetBlogWithAuthorDto> GetBlogWithAuthorListAsync(int id)
         {
             return await _httpClient.GetFromJsonAsync<GetBlogWithAuthorDto>($"Blogs/GetBlogWithAuthorList/{id}");

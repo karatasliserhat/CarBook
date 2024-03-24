@@ -1,6 +1,6 @@
-﻿namespace UdemyCarBook.Application.Features.Mediator.Results
+﻿namespace UdemyCarBook.Dto.Dtos
 {
-    public class GetLastThreeBlogsWithAuthorsAndCategoryQueryResult
+    public class GetBlogWithAuthorAndCategoryDto
     {
         public int BlogId { get; set; }
         public string Title { get; set; }
@@ -11,6 +11,6 @@
         public string Description { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-
+        public string DataProtect { get; set; }
     }
 }
