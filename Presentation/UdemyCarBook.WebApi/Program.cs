@@ -24,6 +24,7 @@ builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<ICarPricingRepository, CarPricingRepository>();
 builder.Services.AddScoped<ITagCloudRepository, TagCloudRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddMediatR(conf =>
