@@ -80,7 +80,7 @@ namespace UdemyCarBook.Persitence.Repositories
 
         public async Task<int> GetCarCountByKmSmallerThen1000()
         {
-            return await _context.Cars.Where(x => x.Km < 100).CountAsync();
+            return await _context.Cars.Where(x => x.Km < 1000).CountAsync();
         }
 
         public async Task<int> GetCarCountByFuelGassolineOrDiesel()
@@ -95,12 +95,12 @@ namespace UdemyCarBook.Persitence.Repositories
 
         public async Task<string> GetCarBrandAndModelByRentPriceDailyMin()
         {
-            return await _context.CarPricings.Include(x => x.Car).OrderByDescending(x => x.Amaount).Select(x => x.Car.Model).FirstOrDefaultAsync();
+            return await _context.CarPricings.Include(x => x.Car).Include(x=> x.Pricing).Where(x=> x.Pricing.Name=="Günlük").OrderBy(x => x.Amaount).Select(x => x.Car.Model).FirstOrDefaultAsync();
         }
 
         public async Task<string> GetCarBrandAndModelByRentPriceDailyMax()
         {
-            return await _context.CarPricings.Include(x => x.Car).OrderBy(x => x.Amaount).Select(x => x.Car.Model).FirstOrDefaultAsync();
+            return await _context.CarPricings.Include(x => x.Car).Include(x => x.Pricing).Where(x => x.Pricing.Name == "Günlük").OrderByDescending(x => x.Amaount).Select(x => x.Car.Model).FirstOrDefaultAsync();
         }
     }
 }
