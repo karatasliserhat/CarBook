@@ -134,6 +134,11 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Comment, UpdateCommentCommand>().ReverseMap();
             CreateMap<Comment, GetCommentByBlogIdQueryResult>().ReverseMap();
 
+            CreateMap<RentACar, GetRentACarFilterQeuryResult>().
+                ForMember(x => x.CarModel, map => map.MapFrom(x => x.Car.Model)).
+                ForMember(x => x.BrandName, map => map.MapFrom(x => x.Car.Brand.Name)).
+                ForMember(x => x.CoverImageUrl, map => map.MapFrom(x => x.Car.CoverImageUrl)).ReverseMap();
+
         }
     }
 }
