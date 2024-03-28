@@ -35,8 +35,8 @@ namespace UdemyCarBook.WebApi.Hubs
             var getWeeklyCarPricingAvgPrice = await _statisticRepository.GetWeeklyCarPricingAvgPrice();
             await Clients.All.SendAsync("ReceiveGetWeeklyCarPricingAvgPrice", getWeeklyCarPricingAvgPrice.ToString("₺ 0.00"));
 
-            var getHourslyCarPricingAvgPrice = await _statisticRepository.GetHourslyCarPricingAvgPrice();
-            await Clients.All.SendAsync("ReceiveGetHourslyCarPricingAvgPrice", getHourslyCarPricingAvgPrice.ToString("₺ 0.00"));
+            var getMountlyCarPricingAvgPrice = await _statisticRepository.GetMountlyCarPricingAvgPrice();
+            await Clients.All.SendAsync("ReceiveGetMountlyCarPricingAvgPrice", getMountlyCarPricingAvgPrice.ToString("₺ 0.00"));
 
             var getCarCountByTransmissonAuto = await _statisticRepository.GetCarCountByTransmissonAuto();
             await Clients.All.SendAsync("ReceiveGetCarCountByTransmissonAuto", getCarCountByTransmissonAuto);

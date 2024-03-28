@@ -1,4 +1,5 @@
-﻿using UdemyCarBook.Domain.Entities;
+﻿using UdemyCarBook.Application.ViewModels;
+using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Interfaces
 {
@@ -6,5 +7,6 @@ namespace UdemyCarBook.Application.Interfaces
     {
         Task<List<CarPricing>> GetCarWithPricingAndBrandList();
         Task<List<CarPricing>> GetCarWithPricingAndBrandDayList();
+        Task<List<CarPricingViewModel>> GetCarPricingWithTimePeriod();
     }
 }

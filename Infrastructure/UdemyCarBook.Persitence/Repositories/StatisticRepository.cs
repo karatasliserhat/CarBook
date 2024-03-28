@@ -49,9 +49,9 @@ namespace UdemyCarBook.Persitence.Repositories
             return await _context.CarPricings.Include(x => x.Pricing).Include(x => x.Car).Where(x => x.Pricing.Name == "Haftalık").AverageAsync(x => x.Amaount);
         }
 
-        public async Task<decimal> GetHourslyCarPricingAvgPrice()
+        public async Task<decimal> GetMountlyCarPricingAvgPrice()
         {
-            return await _context.CarPricings.Include(x => x.Pricing).Include(x => x.Car).Where(x => x.Pricing.Name == "Saatlik").AverageAsync(x => x.Amaount);
+            return await _context.CarPricings.Include(x => x.Pricing).Include(x => x.Car).Where(x => x.Pricing.Name == "Aylık").AverageAsync(x => x.Amaount);
         }
 
         public async Task<int> GetCarCountByTransmissonAuto()
@@ -95,7 +95,7 @@ namespace UdemyCarBook.Persitence.Repositories
 
         public async Task<string> GetCarBrandAndModelByRentPriceDailyMin()
         {
-            return await _context.CarPricings.Include(x => x.Car).Include(x=> x.Pricing).Where(x=> x.Pricing.Name=="Günlük").OrderBy(x => x.Amaount).Select(x => x.Car.Model).FirstOrDefaultAsync();
+            return await _context.CarPricings.Include(x => x.Car).Include(x => x.Pricing).Where(x => x.Pricing.Name == "Günlük").OrderBy(x => x.Amaount).Select(x => x.Car.Model).FirstOrDefaultAsync();
         }
 
         public async Task<string> GetCarBrandAndModelByRentPriceDailyMax()

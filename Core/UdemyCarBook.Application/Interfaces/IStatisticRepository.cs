@@ -9,7 +9,7 @@
         Task<int> GetBrandCount();
         Task<decimal> GetDailiyCarPricingAvgPrice();
         Task<decimal> GetWeeklyCarPricingAvgPrice();
-        Task<decimal> GetHourslyCarPricingAvgPrice();
+        Task<decimal> GetMountlyCarPricingAvgPrice();
         Task<int> GetCarCountByTransmissonAuto();
         Task<string> GetBrandNameByMaxCar();
         Task<string> GetTitleByMaxBlogComment();

@@ -2,6 +2,7 @@
 using UdemyCarBook.Application.Features.Mediator.Commands;
 using UdemyCarBook.Application.Features.Mediator.Results;
 using UdemyCarBook.Application.Features.Mediator.Results.ReservationResults;
+using UdemyCarBook.Application.ViewModels;
 using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Mappings
@@ -121,6 +122,13 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<CarPricing, GetCarPricingByIdQueryResult>().ReverseMap();
             CreateMap<CarPricing, CreateCarPricingCommand>().ReverseMap();
             CreateMap<CarPricing, UpdateCarPricingCommand>().ReverseMap();
+
+            CreateMap<CarPricingViewModel, GetCarPricingWithTimePeriodQueryResult>().
+                ForMember(x => x.CoverImageUrl, map => map.MapFrom(x => x.CoverImageUrl)).
+                ForMember(x => x.ModelBrand, map => map.MapFrom(x => x.ModelBrand)).
+                ForMember(x => x.DailyAmound, map => map.MapFrom(x => x.Amounts[0])).
+                ForMember(x => x.WeeklyAmount, map => map.MapFrom(x => x.Amounts[1])).
+                ForMember(x => x.MountlyAmoun, map => map.MapFrom(x => x.Amounts[2])).ReverseMap();
 
 
             CreateMap<TagCloud, GetTagCloudQueryResult>().ReverseMap();

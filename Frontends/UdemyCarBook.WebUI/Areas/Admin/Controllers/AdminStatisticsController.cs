@@ -17,7 +17,7 @@ namespace UdemyCarBook.WebUI.Areas.Admin.Controllers
             ViewBag.getDailiyCarPricingAvgPriceRandom= rnd.Next(0, 101);
 
             ViewBag.getWeeklyCarPricingAvgPriceRandom= rnd.Next(0, 101);
-            ViewBag.getHourslyCarPricingAvgPriceRandom= rnd.Next(0, 101);
+            ViewBag.getMountlyCarPricingAvgPriceRondom = rnd.Next(0, 101);
             ViewBag.getCarCountByTransmissonAutoRandom = rnd.Next(0, 101);
             ViewBag.getBrandNameByMaxCarRandom = rnd.Next(0, 101);
             ViewBag.getTitleByMaxBlogCommentRandom = rnd.Next(0, 101);

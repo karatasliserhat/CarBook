@@ -3,7 +3,7 @@ using UdemyCarBook.Application.Features.Mediator.Results;
 
 namespace UdemyCarBook.Application.Features.Mediator.Queries
 {
-    public class GetHourslyCarPricingAvgPriceQuery : IRequest<GetHourslyCarPricingAvgPriceQueryResult>
+    public class GetCarPricingWithTimePeriodQuery:IRequest<List<GetCarPricingWithTimePeriodQueryResult>>
     {
     }
 }

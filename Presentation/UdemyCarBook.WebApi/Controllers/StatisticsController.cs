@@ -51,7 +51,7 @@ namespace UdemyCarBook.WebApi.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> GetHourslyCarPricingAvgPrice()
         {
-            return Ok(await _mediatR.Send(new GetHourslyCarPricingAvgPriceQuery()));
+            return Ok(await _mediatR.Send(new GetMountlyCarPricingAvgPriceQuery()));
         }
         
         [HttpGet("[action]")]
