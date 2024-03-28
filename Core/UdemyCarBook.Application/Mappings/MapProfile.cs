@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using UdemyCarBook.Application.Features.Mediator.Commands;
 using UdemyCarBook.Application.Features.Mediator.Results;
+using UdemyCarBook.Application.Features.Mediator.Results.ReservationResults;
 using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Mappings
@@ -138,6 +139,15 @@ namespace UdemyCarBook.Application.Mappings
                 ForMember(x => x.CarModel, map => map.MapFrom(x => x.Car.Model)).
                 ForMember(x => x.BrandName, map => map.MapFrom(x => x.Car.Brand.Name)).
                 ForMember(x => x.CoverImageUrl, map => map.MapFrom(x => x.Car.CoverImageUrl)).ReverseMap();
+
+
+            CreateMap<Reservation, GetReservationQueryResults>().
+                ForMember(x => x.CarModel, map => map.MapFrom(x => x.Car.Model)).
+                ForMember(x => x.PickUpLocationName, map => map.MapFrom(x => x.PickUpLocation.Name)).
+                ForMember(x => x.DropOffLocationName, map => map.MapFrom(x => x.DropOffLocation.Name)).ReverseMap();
+            CreateMap<Reservation, GetReservationByIdQueryResult>().ReverseMap();
+            CreateMap<Reservation, CreateReservationCommand>().ReverseMap();
+            CreateMap<Reservation, UpdateReservationCommand>().ReverseMap();
 
         }
     }

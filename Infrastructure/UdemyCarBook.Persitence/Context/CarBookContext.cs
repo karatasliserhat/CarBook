@@ -34,6 +34,7 @@ namespace UdemyCarBook.Persitence.Context
         public DbSet<RentACar> RentACars { get; set; }
         public DbSet<RentACarProcess> RentACarProcesses { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

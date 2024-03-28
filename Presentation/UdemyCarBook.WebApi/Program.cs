@@ -37,6 +37,9 @@ builder.Services.AddScoped<ITagCloudRepository, TagCloudRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();
 builder.Services.AddScoped<IRentACarRepository, RentACarRepository>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+
+
 builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.AddMediatR(conf =>
 {
