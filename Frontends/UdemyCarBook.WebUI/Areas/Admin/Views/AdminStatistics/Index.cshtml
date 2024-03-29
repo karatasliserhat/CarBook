@@ -22,11 +22,26 @@
 
             setInterval(() => {
 
-                connection.invoke("SendStatistic");
+                connection.invoke("SendStatisticCarCount");
+                connection.invoke("SendStatisticLokasyonCount");
+                connection.invoke("SendStatisticAuthorCount");
+                connection.invoke("SendStatisticBlogCount");
+                connection.invoke("SendStatisticBrandCount");
+                connection.invoke("SendStatisticDailiyCarPricingAvgPrice");
+                connection.invoke("SendStatisticWeeklyCarPricingAvgPrice");
+                connection.invoke("SendStatisticMountlyCarPricingAvgPrice");
+                connection.invoke("SendStatisticCarCountByTransmissonAuto");
+                connection.invoke("SendStatisticBrandNameByMaxCar");
+                connection.invoke("SendStatisticTitleByMaxBlogComment");
+                connection.invoke("SendStatisticCarCountByKmSmallerThen1000");
+                connection.invoke("SendStatisticCarCountByFuelGassolineOrDiesel");
+                connection.invoke("SendStatisticCarCountByFuelElectic");
+                connection.invoke("SendStatisticCarBrandAndModelByRentPriceDailyMin");
+                connection.invoke("SendStatisticCarBrandAndModelByRentPriceDailyMax");
             }, 1000);
 
 
-        }).catch(err => {
+        }).catch((err) => {
 
             console.log(err);
         });

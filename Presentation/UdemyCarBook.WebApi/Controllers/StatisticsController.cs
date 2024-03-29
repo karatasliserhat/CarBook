@@ -21,6 +21,11 @@ namespace UdemyCarBook.WebApi.Controllers
             return Ok(await _mediatR.Send(new GetCarCountQuery()));
         }
         [HttpGet("[action]")]
+        public async Task<IActionResult> GetBrandCar()
+        {
+            return Ok(await _mediatR.Send(new GetBrandCountQuery()));
+        }
+        [HttpGet("[action]")]
         public async Task<IActionResult> GetCountLocation()
         {
             return Ok(await _mediatR.Send(new GetLocationCountQuery()));

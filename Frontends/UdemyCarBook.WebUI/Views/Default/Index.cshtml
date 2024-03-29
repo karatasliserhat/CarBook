@@ -2,6 +2,12 @@
 @{
     Layout = null;
 }
+<style type="text/css">
+    #select option {
+        color: black;
+    }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 @await Component.InvokeAsync("_HeadUILayoutViewComponentPartial")
@@ -21,27 +27,27 @@
                                 </h2>
                                 <div class="form-group">
                                     <label for="" class="label">Alınacak Lokasyon</label>
-                                    <select class="form-control" asp-for="@Model.LocationId" asp-items="@ViewBag.SelectValues">
+                                    <select class="form-control" id="select" asp-for="@Model.LocationId" asp-items="@ViewBag.SelectValues">
                                     </select>
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group mr-2">
                                         <label for="" class="label">Alış Tarihi</label>
-                                        <input type="date" class="form-control" asp-for="@Model.PicUpDate"  placeholder="Date">
+                                        <input type="date" class="form-control" asp-for="@Model.PicUpDate" placeholder="Tarih Seçiniz">
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="" class="label">Teslim Tarihi</label>
-                                        <input type="date" class="form-control" asp-for="@Model.BackOffDate"  placeholder="Date">
+                                        <input type="date" class="form-control" asp-for="@Model.BackOffDate" placeholder="Tarih Seçiniz">
                                     </div>
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group mr-2">
                                         <label for="" class="label">Alış Saati</label>
-                                        <input type="time" class="form-control" asp-for="@Model.PicUpTime"  placeholder="Time">
+                                        <input type="time" class="form-control" asp-for="@Model.PicUpTime" placeholder="Saat Seçiniz">
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="" class="label">Teslim Saati</label>
-                                        <input type="time" class="form-control" asp-for="@Model.BackOffTime" placeholder="Time">
+                                        <input type="time" class="form-control" asp-for="@Model.BackOffTime" placeholder="Saat Seçiniz">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -78,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                                <p><a asp-action="Index" asp-controller="CarPricing" class="btn btn-primary py-3 px-4">Araç Fiyat Listesini Görün</a></p>
                             </div>
                         </div>
                     </div>
