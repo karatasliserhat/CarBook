@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UdemyCarBook.WebUI.Abstracts;
 
 namespace UdemyCarBook.WebUI.ViewComponents.UILayoutViewComponents
 {
-    public class _FooterUILayoutViewComponentPartial:ViewComponent
+    public class _FooterUILayoutViewComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IFooterAddressConsumeApiService _footerAddressConsumeApiService;
+
+        public _FooterUILayoutViewComponentPartial(IFooterAddressConsumeApiService footerAddressConsumeApiService)
         {
-            return View();
+            _footerAddressConsumeApiService = footerAddressConsumeApiService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return View(await _footerAddressConsumeApiService.GetListAsync("FooterAddresses"));
         }
     }
 }
