@@ -11,6 +11,11 @@ namespace UdemyCarBook.WebUI.Services
             _client = client;
         }
 
+        public async Task<ResultCommentBlogCountDto> GetBlogCommentCountAsync(int id)
+        {
+            return await _client.GetFromJsonAsync<ResultCommentBlogCountDto>($"Comments/GetBlogCommentCount/{id}");
+        }
+
         public async Task<List<GetCommentByBlogIdDto>> GetCommentByBlogIdListAsync(int id)
         {
             return await _client.GetFromJsonAsync<List<GetCommentByBlogIdDto>>($"Comments/GetCommentByBlogId/{id}");

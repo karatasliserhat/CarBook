@@ -28,12 +28,21 @@ namespace UdemyCarBook.WebApi.Controllers
             var values = await _mediatR.Send(new GetCommentByIdQuery(id));
             return Ok(values);
         }
+
         [HttpGet("[action]/{id}")]
         public async Task<IActionResult> GetCommentByBlogId(int id)
         {
             var values = await _mediatR.Send(new GetCommentByBlogIdQuery(id));
             return Ok(values);
         }
+
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetBlogCommentCount(int id)
+        {
+            var values = await _mediatR.Send(new GetCommentBlogCountQuery(id));
+            return Ok(values);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateComment(CreateCommentCommand createCommentCommand)
         {

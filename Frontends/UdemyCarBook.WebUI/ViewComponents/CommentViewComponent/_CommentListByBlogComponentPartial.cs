@@ -17,6 +17,7 @@ namespace UdemyCarBook.WebUI.ViewComponents.CommentViewComponent
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
             var dataId = int.Parse(_dataProtector.Unprotect(id));
+            
             return View(await _commentConsumeApiService.GetCommentByBlogIdListAsync(dataId));
         }
     }

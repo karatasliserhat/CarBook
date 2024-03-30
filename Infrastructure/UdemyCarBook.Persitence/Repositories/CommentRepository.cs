@@ -14,6 +14,11 @@ namespace UdemyCarBook.Persitence.Repositories
             _context = context;
         }
 
+        public async Task<int> BlogCommentCountAsync(int blogId)
+        {
+            return await _context.Comments.Where(x => x.BlogId == blogId).CountAsync();
+        }
+
         public async Task<List<Comment>> GetCommentByBlogIdListAsync(int blogId)
         {
             return await _context.Comments.AsNoTracking().Where(x => x.BlogId == blogId).ToListAsync();

@@ -9,16 +9,19 @@ namespace UdemyCarBook.WebUI.ViewComponents.BlogViewComponents
     {
         private readonly IBlogConsumeApiService _blogConsumeApiService;
         private readonly IDataProtector _dataProtector;
-
-        public _BlogDetailMainComponentPartial(IBlogConsumeApiService blogConsumeApiService, IDataProtectionProvider dataProtector)
+        private readonly ICommentConsumeApiService _commentConsumeApiService;
+        public _BlogDetailMainComponentPartial(IBlogConsumeApiService blogConsumeApiService, IDataProtectionProvider dataProtector, ICommentConsumeApiService commentConsumeApiService)
         {
             _blogConsumeApiService = blogConsumeApiService;
             _dataProtector = dataProtector.CreateProtector("BlogController");
+            _commentConsumeApiService = commentConsumeApiService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
             var dataId = int.Parse(_dataProtector.Unprotect(id));
+            var commentCount = await _commentConsumeApiService.GetBlogCommentCountAsync(dataId);
+            ViewBag.CommentCount = commentCount.BlogCommentCount;
             return View(await _blogConsumeApiService.GetByIdAsync("Blogs", dataId));
         }
     }
