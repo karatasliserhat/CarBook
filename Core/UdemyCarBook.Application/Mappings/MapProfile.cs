@@ -157,6 +157,10 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Reservation, CreateReservationCommand>().ReverseMap();
             CreateMap<Reservation, UpdateReservationCommand>().ReverseMap();
 
+
+            CreateMap<CarFeature, GetCarFeatureByCarIdQeuryResult>().
+                 ForMember(x => x.CarName, map => map.MapFrom(x => x.Card.Model)).
+                 ForMember(x => x.FeatureName, map => map.MapFrom(x => x.Feature.Name)).ReverseMap();
         }
     }
 }
