@@ -14,6 +14,7 @@ namespace UdemyCarBook.Persitence.Repositories
             _context = context;
         }
 
+
         public async Task<List<CarFeature>> GetCarFeatureByCarId(int CarId)
         {
             return await _context.CarFeatures.Include(x => x.Card).Include(x => x.Feature).AsNoTracking().Where(x => x.CarId == CarId).ToListAsync();

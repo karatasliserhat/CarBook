@@ -34,5 +34,12 @@ namespace UdemyCarBook.WebApi.Controllers
             await _mediator.Send(new UpdateCarFeatureAvailableChangeToFalseCommand(CarFeatureId));
             return Ok("Araç Özelliği Pasif Edildi");
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateCarFeature(CreateCarFeatureCommand createCarFeatureCommand)
+        {
+
+            await _mediator.Send(createCarFeatureCommand);
+            return Ok("Araç Özelliği Eklendi");
+        }
     }
 }
