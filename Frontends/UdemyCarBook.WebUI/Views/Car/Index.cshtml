@@ -21,7 +21,10 @@
                                     <span class="cat">@item.BrandName</span>
                                     <p class="price ml-auto">₺@item.Amaount <span>/@item.PricingName</span></p>
                                 </div>
-                                <p class="d-flex mb-0 d-block"><a asp-controller="Reservation" asp-action="Index" class="btn btn-primary py-2 mr-1">Hemen Kirala</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Detaylar</a></p>
+                                <p class="d-flex mb-0 d-block">
+                                    <a asp-action="#" asp-controller="#" asp-route-CarId="@item.DataProtect" class="btn btn-primary py-2 mr-1">Hemen Kirala</a>
+                                    <a asp-action="CarDetail" asp-controller="Car" asp-route-id="@item.DataProtect" class="btn btn-secondary py-2 ml-1">Detaylar</a>
+                                </p>
                             </div>
                         </div>
                     </div>

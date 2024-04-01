@@ -11,5 +11,6 @@
         public int PricingId { get; set; }
         public string PricingName { get; set; }
         public decimal Amaount { get; set; }
+        public string DataProtect { get; set; }
     }
 }

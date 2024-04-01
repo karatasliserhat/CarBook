@@ -163,6 +163,9 @@ namespace UdemyCarBook.Application.Mappings
                  ForMember(x => x.FeatureName, map => map.MapFrom(x => x.Feature.Name)).ReverseMap();
 
             CreateMap<CarFeature, CreateCarFeatureCommand>().ReverseMap();
+
+
+            CreateMap<CarDescription, GetCarDescriptionByCarIdQueryResult>().ReverseMap();
         }
     }
 }

@@ -39,6 +39,7 @@ builder.Services.AddScoped<IStatisticRepository, StatisticRepository>();
 builder.Services.AddScoped<IRentACarRepository, RentACarRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<ICarFeatureRepository, CarFeatureRepository>();
+builder.Services.AddScoped<ICarDescriptionRepository, CarDescriptionRepository>();
 
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
