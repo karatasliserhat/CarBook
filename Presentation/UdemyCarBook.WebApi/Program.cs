@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using UdemyCarBook.Application.Interfaces;
 using UdemyCarBook.Application.Mappings;
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation(x => x.RegisterValidatorsFromAssembly(typeof(MapProfile).Assembly));
 
 builder.Services.AddCors(opts =>
 {
@@ -40,6 +41,7 @@ builder.Services.AddScoped<IRentACarRepository, RentACarRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<ICarFeatureRepository, CarFeatureRepository>();
 builder.Services.AddScoped<ICarDescriptionRepository, CarDescriptionRepository>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
 
 builder.Services.AddAutoMapper(typeof(MapProfile));

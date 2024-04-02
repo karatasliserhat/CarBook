@@ -19,6 +19,7 @@
         public virtual List<RentACar> RentACars { get; set; }
         public virtual List<RentACarProcess> RentACarProcesses { get; set; }
         public virtual List<Reservation> Reservations { get; set; }
+        public virtual List<Review> Reviews { get; set; }
 
     }
 }

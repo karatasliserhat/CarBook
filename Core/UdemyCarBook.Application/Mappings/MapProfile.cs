@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using UdemyCarBook.Application.Features.Mediator.Commands;
+using UdemyCarBook.Application.Features.Mediator.Commands.ReviewCommands;
 using UdemyCarBook.Application.Features.Mediator.Results;
 using UdemyCarBook.Application.Features.Mediator.Results.ReservationResults;
 using UdemyCarBook.Application.ViewModels;
@@ -166,6 +167,11 @@ namespace UdemyCarBook.Application.Mappings
 
 
             CreateMap<CarDescription, GetCarDescriptionByCarIdQueryResult>().ReverseMap();
+
+
+            CreateMap<Review, GetReviewListByCarIdQueryResult>().ReverseMap();
+            CreateMap<Review, UpdateReviewCommand>().ReverseMap();
+            CreateMap<Review, CreateReviewCommand>().ReverseMap();
         }
     }
 }
