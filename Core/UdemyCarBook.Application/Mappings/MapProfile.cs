@@ -4,6 +4,7 @@ using UdemyCarBook.Application.Features.Mediator.Commands.ReviewCommands;
 using UdemyCarBook.Application.Features.Mediator.Results;
 using UdemyCarBook.Application.Features.Mediator.Results.ReservationResults;
 using UdemyCarBook.Application.ViewModels;
+using UdemyCarBook.Domain;
 using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Application.Mappings
@@ -172,6 +173,8 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Review, GetReviewListByCarIdQueryResult>().ReverseMap();
             CreateMap<Review, UpdateReviewCommand>().ReverseMap();
             CreateMap<Review, CreateReviewCommand>().ReverseMap();
+
+            CreateMap<AppUser, GetCheckApUserQueryResult>().ForMember(x => x.AppRoleName, map => map.MapFrom(x => x.AppRole.AppRoleName)).ReverseMap();
         }
     }
 }
