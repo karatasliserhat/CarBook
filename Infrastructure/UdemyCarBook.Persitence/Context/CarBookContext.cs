@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using UdemyCarBook.Domain;
 using UdemyCarBook.Domain.Entities;
 
 namespace UdemyCarBook.Persitence.Context
@@ -10,7 +11,8 @@ namespace UdemyCarBook.Persitence.Context
         {
 
         }
-
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Brand> Brands { get; set; }
@@ -36,6 +38,7 @@ namespace UdemyCarBook.Persitence.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
+       
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
