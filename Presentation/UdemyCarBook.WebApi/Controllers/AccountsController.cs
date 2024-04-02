@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using UdemyCarBook.Application.Features.Mediator.Commands;
 using UdemyCarBook.Application.Features.Mediator.Queries;
 using UdemyCarBook.Application.Tools;
 
@@ -25,6 +26,13 @@ namespace UdemyCarBook.WebApi.Controllers
                 return Created("", JwtTokenGenerator.GenerateToken(values));
             }
             return BadRequest("Kullanıcı Adı veya Şifre Hatalıdır");
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> CreateAppUser(CreateAppUserCommand createAppUserCommand)
+        {
+            await _mediatR.Send(createAppUserCommand);
+            return Ok("Kulanıcı Başarıyla Oluşturuldu");
         }
     }
 }

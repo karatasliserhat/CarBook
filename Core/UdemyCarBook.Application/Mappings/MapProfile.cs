@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using UdemyCarBook.Application.Enums;
 using UdemyCarBook.Application.Features.Mediator.Commands;
 using UdemyCarBook.Application.Features.Mediator.Commands.ReviewCommands;
 using UdemyCarBook.Application.Features.Mediator.Results;
@@ -175,6 +176,8 @@ namespace UdemyCarBook.Application.Mappings
             CreateMap<Review, CreateReviewCommand>().ReverseMap();
 
             CreateMap<AppUser, GetCheckApUserQueryResult>().ForMember(x => x.AppRoleName, map => map.MapFrom(x => x.AppRole.AppRoleName)).ReverseMap();
+
+            CreateMap<AppUser, CreateAppUserCommand>().ReverseMap();
         }
     }
 }
