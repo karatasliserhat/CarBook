@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using UdemyCarBook.Dto.Dtos;
+using UdemyCarBook.Shared.Services;
 using UdemyCarBook.WebUI.Abstracts;
 
 namespace UdemyCarBook.WebUI.Controllers
@@ -11,17 +12,19 @@ namespace UdemyCarBook.WebUI.Controllers
         private readonly ILocationConsumeApiService _locationConsumeApiService;
         private readonly IDataProtector _dataProtector;
         private readonly IReservationConsumeApiService _reservationConsumeApiService;
-        public ReservationController(ILocationConsumeApiService locationConsumeApiService, IDataProtectionProvider dataProtector, IReservationConsumeApiService reservationConsumeApiService)
+        private readonly ISharedAuthorizationApiService _shared;
+        public ReservationController(ILocationConsumeApiService locationConsumeApiService, IDataProtectionProvider dataProtector, IReservationConsumeApiService reservationConsumeApiService, ISharedAuthorizationApiService shared)
         {
             _locationConsumeApiService = locationConsumeApiService;
             _dataProtector = dataProtector.CreateProtector("RentACarController");
             _reservationConsumeApiService = reservationConsumeApiService;
+            _shared = shared;
         }
 
 
         public async Task GetLocationSelect()
         {
-            var values = await _locationConsumeApiService.GetListAsync("Locations");
+            var values = await _locationConsumeApiService.GetListAsync("Locations", _shared.AccessToken);
             ViewBag.PickUpSelectList = new SelectList(values, "LocationId", "Name");
             ViewBag.DropOffSelectList = new SelectList(values, "LocationId", "Name");
         }
@@ -40,7 +43,7 @@ namespace UdemyCarBook.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CreateReservationDto createReservationDto)
         {
-            var result = await _reservationConsumeApiService.CreateAsync("Reservations", createReservationDto);
+            var result = await _reservationConsumeApiService.CreateAsync("Reservations", createReservationDto, _shared.AccessToken);
             if (result.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Default");

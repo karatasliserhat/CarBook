@@ -4,6 +4,6 @@ namespace UdemyCarBook.WebUI.Abstracts
 {
     public interface ICarPricingConsumeApiServe : IGenericConsumeApiService<ResultCarPricingDto, CreateCarPricingDto, UpdateCarPricingDto>
     {
-        Task<List<GetCarPricingWithTimePeriodDto>> GetCarPricingWithTimePeriod();
+        Task<List<GetCarPricingWithTimePeriodDto>> GetCarPricingWithTimePeriod(string token);
     }
 }

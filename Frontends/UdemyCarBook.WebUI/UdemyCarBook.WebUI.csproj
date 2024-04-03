@@ -23,11 +23,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\UdemyCarBook.Dto\UdemyCarBook.Dto.csproj" />
+    <ProjectReference Include="..\UdemyCarBook.Shared\UdemyCarBook.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

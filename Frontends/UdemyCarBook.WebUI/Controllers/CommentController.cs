@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using UdemyCarBook.Dto.Dtos;
+using UdemyCarBook.Shared.Services;
 using UdemyCarBook.WebUI.Abstracts;
 
 namespace UdemyCarBook.WebUI.Controllers
@@ -9,11 +10,12 @@ namespace UdemyCarBook.WebUI.Controllers
     {
         private readonly IDataProtector _dataProtector;
         private readonly ICommentConsumeApiService _commentService;
-
-        public CommentController(IDataProtectionProvider dataProtector, ICommentConsumeApiService commentService)
+        private readonly ISharedAuthorizationApiService _shared;
+        public CommentController(IDataProtectionProvider dataProtector, ICommentConsumeApiService commentService, ISharedAuthorizationApiService shared)
         {
             _dataProtector = dataProtector.CreateProtector("BlogController");
             _commentService = commentService;
+            _shared = shared;
         }
 
         public PartialViewResult CommentAdd()
@@ -26,7 +28,7 @@ namespace UdemyCarBook.WebUI.Controllers
             var blogId = int.Parse(_dataProtector.Unprotect(id));
             createCommentDto.BlogId = blogId;
             createCommentDto.CreatedDate = DateTime.UtcNow;
-            var response = await _commentService.CreateAsync("Comments", createCommentDto);
+            var response = await _commentService.CreateAsync("Comments", createCommentDto, _shared.AccessToken);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("BlogDetail", "Blog", new { id = id });

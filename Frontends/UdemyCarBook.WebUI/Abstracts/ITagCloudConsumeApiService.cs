@@ -4,6 +4,6 @@ namespace UdemyCarBook.WebUI.Abstracts
 {
     public interface ITagCloudConsumeApiService:IGenericConsumeApiService<ResultTagCloudDto,CreateTagCloudDto,UpdateTagCloudDto>
     {
-        Task<List<GetTagCloudByBlogIdDto>> GetTagCloudByBlogIdListAsync(int id);
+        Task<List<GetTagCloudByBlogIdDto>> GetTagCloudByBlogIdListAsync(int id, string token);
     }
 }

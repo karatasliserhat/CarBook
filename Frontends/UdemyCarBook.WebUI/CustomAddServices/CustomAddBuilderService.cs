@@ -1,4 +1,5 @@
-﻿using UdemyCarBook.WebUI.Abstracts;
+﻿using UdemyCarBook.Shared.Services;
+using UdemyCarBook.WebUI.Abstracts;
 using UdemyCarBook.WebUI.Services;
 
 namespace UdemyCarBook.WebUI.CustomAddServices
@@ -7,6 +8,9 @@ namespace UdemyCarBook.WebUI.CustomAddServices
     {
         public static void AddBuilderService(this IServiceCollection Services, IConfiguration configuration)
         {
+            Services.AddHttpContextAccessor();
+            Services.AddScoped<ISharedAuthorizationApiService, SharedAuthorizationApiService>();
+
             Services.AddScoped(typeof(IGenericConsumeApiService<,,>), typeof(GenericConsumeApiService<,,>));
 
             Services.AddHttpClient<IAboutConsumeApiService, AboutConsumeApiService>(opts =>
@@ -80,7 +84,7 @@ namespace UdemyCarBook.WebUI.CustomAddServices
             Services.AddHttpClient<ISocialMediaConsumeApiService, SocialMediaConsumeApiService>(opts =>
             {
                 opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
-            }); 
+            });
             Services.AddHttpClient<IRentACarConsumeApiService, RentACarConsumeApiService>(opts =>
             {
                 opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
@@ -97,11 +101,15 @@ namespace UdemyCarBook.WebUI.CustomAddServices
             {
                 opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
             });
-             Services.AddHttpClient<ICarDescriptionConsumeApiService, CarDescriptionConsumeApiService>(opts =>
+            Services.AddHttpClient<ICarDescriptionConsumeApiService, CarDescriptionConsumeApiService>(opts =>
+           {
+               opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
+           });
+            Services.AddHttpClient<IReviewConsumeApiService, ReviewConsumeApiService>(opts =>
             {
                 opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
-            }); 
-            Services.AddHttpClient<IReviewConsumeApiService, ReviewConsumeApiService>(opts =>
+            });
+            Services.AddHttpClient<IAccountConsumeApiService, AccountConsumeApiService>(opts =>
             {
                 opts.BaseAddress = new Uri(configuration["ApiConsumes:BaseAddress"]);
             });

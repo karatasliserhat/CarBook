@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using UdemyCarBook.Application.Enums;
 
 namespace UdemyCarBook.Application.Features.Mediator.Commands
 {
@@ -7,6 +6,9 @@ namespace UdemyCarBook.Application.Features.Mediator.Commands
     {
         public string AppUserName { get; set; }
         public string Password { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
         public int AppRoleId { get; set; }
     }
 }

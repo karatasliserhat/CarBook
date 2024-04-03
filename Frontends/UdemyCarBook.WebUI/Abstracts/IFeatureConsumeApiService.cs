@@ -4,6 +4,6 @@ namespace UdemyCarBook.WebUI.Abstracts
 {
     public interface IFeatureConsumeApiService:IGenericConsumeApiService<ResultFeatureDto,CreateFeatureDto,UpdateFeatureDto>
     {
-        Task<List<ResultFeatureCarIdListDto>> GetFeatureListAndCarId();
+        Task<List<ResultFeatureCarIdListDto>> GetFeatureListAndCarId(string token);
     }
 }
