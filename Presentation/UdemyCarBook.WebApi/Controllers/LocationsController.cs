@@ -18,7 +18,7 @@ namespace UdemyCarBook.WebApi.Controllers
             _mediatR = mediatR;
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> LocationList()
         {
